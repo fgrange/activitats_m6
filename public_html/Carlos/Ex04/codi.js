@@ -1,3 +1,8 @@
+//4. Heu de crear un script que faci operacions entre dues dades i mostri el resultat per pantalla
+//mitjançant un alert per cada operació: cal que compari dos booleans, que sumi dos sencers, que
+//multipliqui dos reals, i que compari dos caràcters. Les dades les ha d'introduir l'usuari. Cal posar
+//comentaris al codi.
+
 //Demano les dades
 var a = prompt("Introdueix un 'true' o un 'false'");
 var b = prompt("Introdueix un 'true' on un 'false'");
