@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<!--
+9. Heu de crear un script que calculi la nota mitjana d'avaluació del mòdul d'un alumne. El programa
+demanarà la nota de la primera UF, la nota de la segona UF i la nota de la tercera UF.
+A partir d'aquestes dades, ha de calcular la mitjana ponderada i mostrar-la mitjançant un alert.
+La mitjana ponderada es calcula segons la següent fòrmula:
+Mitjana = (NotaUF1*HoresUF1/HoresTotalsMòdul) + 
+(NotaUF2*HoresUF2/HoresTotalsMòdul) + 
+(NotaUF3*HoresUF3/HoresTotalsMòdul)
+Per calcular la mitjana ponderada cal tenir en compte el número d'hores de cada UF.
+• UF1: 20 hores
+• UF 2: 35 hores
+• UF3: 30 hores
+Cal que definiu constants per a representar aquests valors dins del vostre programa.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+            var notaUf1 = prompt("Introdueix la teva nota de la UF1: ")
+            var notaUf2 = prompt("Introdueix la teva nota de la UF2: ")
+            var notaUf3 = prompt("Introdueix la teva nota de la UF3: ")
+            const h1 = 20, h2 = 35, h3 = 30, hT = (parseInt(h1)+parseInt(h2)+parseInt(h3))
+            var mitjana = (((notaUf1*h1)/hT)+((notaUf2*h2)/hT)+((notaUf3*h3)/hT))
+            alert(mitjana)
+        </script>
+    </head>
+    <body>
+        <div>TODO write content</div>
+    </body>
+</html>
