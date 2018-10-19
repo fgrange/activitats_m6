@@ -3,16 +3,16 @@
 negatiu.
  */
 
-var num = prompt("Introdueix un numero : ", "");
+var num = parseInt(prompt("Introdueix un numero : ", ""));
 
 // alert ("El numero introduit es: " + Math.sign(num));
 
-if (Math.sign(num) == 1) {
-    alert("Numero Positiu.")
-} else if (Math.sign(num) == -1) {
-    alert("Numero Negatiu.")
-} else if (Math.sign(num) == 0) {
-    alert("Zero.")
+if (num > 0) {
+    alert("Numero Positiu.");
+} else if (num == 0) {
+    alert("Zero");
+} else {
+    alert("Negatiu.");
 }
 // 
 // Si x es NaN, el resultado es NaN.

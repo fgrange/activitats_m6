@@ -2,15 +2,15 @@
 introduit un nombre i el nombre de digitis que té (un o dos). */
 
 
-var $digit = prompt("Escriu un nombre de un o dos digits: ");
+var $digit = parseInt(prompt("Escriu un nombre de un o dos digits: "));
 
 
 
-if (($digit.length<2) && ($digit.length>0)){
+if ($digit<10){
     alert("El teu nombre és: "+$digit);
     alert("El teu nombre té 1 digit.");
 }
-else if (($digit.length<3) && ($digit.length>1)){
+else if ($digit<100){
     alert("El teu nombre és: "+$digit);
     alert("El teu nombre té 2 digits.");
 }

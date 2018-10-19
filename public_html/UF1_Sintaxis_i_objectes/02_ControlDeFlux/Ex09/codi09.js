@@ -1,4 +1,4 @@
-/* 
+ /* 
  *  D'un postulant a una feina, que va realitzar un test de capacitació, es va obtenir la següent
 informació: nom del postulant, quantitat total de preguntes que se li van realitzar i quantitat de
 preguntes que va contestar correctament. Es demana fer un programa que llegeixi les dades del

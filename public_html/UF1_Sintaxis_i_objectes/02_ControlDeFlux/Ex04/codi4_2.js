@@ -17,9 +17,8 @@ var $mitjana = $suma/3;
 //li mostro al usuari la seva nota
 
 if ($mitjana>=4){
-
-alert("La nota mitjana del teu mòdul és: "+$mitjana+"\n Mitjana regular.");
-}
+    alert("La nota mitjana del teu mòdul és: "+$mitjana+"\n Mitjana regular.");
+    }
 else{
     alert("La nota mitjana del teu mòdul és: "+$mitjana+"\n Suspès.");
-}
+    }
