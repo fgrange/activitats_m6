@@ -18,9 +18,21 @@ and open the template in the editor.
             //alert(a/b);
             
             var frutas = ["manzana", "naranja", "piña","mango"]
-            for (i in frutas) { alert("Posición i="+i+" hay frutas["+i+"]="+frutas[i]);                                
+            for (i in frutas) { //alert("Posición i="+i+" hay frutas["+i+"]="+frutas[i]);                                
                                 }
-            </script>
+
+document.addEventListener('keypress', (event) => {
+  const keyName = event.key;
+  alert('keypress event\n\n' + 'key: ' + keyName);
+});
+document.addEventListener('keydown', (event) => {
+  const keyName = event.key;
+  alert('keypress event\n\n' + 'key: ' + keyName);
+});
+</script>
+
+
+</html>
     </head>
     <body>
         <div>TODO write content</div>
