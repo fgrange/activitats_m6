@@ -18,10 +18,15 @@ var majors12 = 0;
 for(var i=0;i<3;i++){
     parseFloat(Alsades[i] = prompt("Introduiex alsada triangle " + (i+1) + ":"));
     parseFloat(Amplades[i] = prompt("Introduiex amplada triangle " + (i+1) + ":"));
+    
+    //Calculem la superficie
     Superficie[i] = (Alsades[i]*Amplades[i])/2;
+    
+    //Si es major que 12 afegim un al comptador
     if(Superficie[i] > 12) majors12++;
 }
 
+//Les mostrem per pantalla amb un alert
 alert("Triangle 1"+
         "\n    Alsada = " + Alsades[0] +
         "\n    Amplada = " + Amplades[0] +

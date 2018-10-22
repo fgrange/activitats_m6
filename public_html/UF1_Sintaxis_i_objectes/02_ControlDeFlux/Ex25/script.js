@@ -26,17 +26,34 @@ for(var i=0;i<4;i++){
     }
     else if((Costat1[i] == Costat2[i] && Costat2[i] != Costat3[i]) || (Costat2[i] == Costat3[i] && Costat3[i] != Costat1[i]) || (Costat3[i] == Costat1[i] && Costat1[i] != Costat2[i])){
         isosceles++; tipusTriangle[i] = "Isosceles";
-    }
-    
+    }    
     else {
         escale++; tipusTriangle[i] = "Escale";
     }
 }
 
-if(escale < equilater && escale < isosceles) menys = "Escale";
-if(isosceles < equilater && isosceles < escale) menys = "Equilater";
-if(equilater < escale && equilater < isosceles) menys = "Isosceles";
+//Ara comprovem de quin tipus de triangle hi ha menys
+if(equilater < isosceles){
+    if(equilater < escale) menys = "Equilater";
+    else if (equilater = escale) menys = "Escale i Equilater";
+    else menys = "Escale";
+}
 
+else if(isosceles < escale){
+    if(isosceles < equilater) menys = "Isosceles";
+    else if (isosceles = equilater) menys = "Isosceles i Equilater";
+    else menys = "Equilater";
+}
+
+else if(escale < equilater){
+    if(escale < isosceles) menys = "Escale";
+    else if(escale = isosceles) menys = "Escale i Isosceles";
+    else menys = "Isosceles"
+}
+
+else menys = "Tenim el mateix numero de triangles dels tres tipus"
+
+//I ho mostrem per pantalla
 alert("Triangle 1: " + tipusTriangle[0]+
      "\nTriangle 2: " + tipusTriangle[1] +
      "\nTriangle 3: " + tipusTriangle[2] +

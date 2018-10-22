@@ -6,7 +6,7 @@
 var cinc = 5;
 var taula = "";
 
-//i amb un for fem tota la taula del cinc, copiantla dins dun string
+//i amb un for fem tota la taula del cinc, copiant-la dins dun string
 for(var i = 1; i < 11; i++){
     taula += "5 x " + i + " = " + (cinc*i) + "\n";
 }

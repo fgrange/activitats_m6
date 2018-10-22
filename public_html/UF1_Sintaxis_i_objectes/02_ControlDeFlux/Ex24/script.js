@@ -8,7 +8,7 @@ Exemple: Si ingrés 3 ha d'aparèixer en pantalla els valors 3, 6, 9, fins al 36
 var numero = parseInt(prompt("Introdueix un numero"));
 var taula = "";
 
-//i les demanem amb un for, alhora que les analitzem
+//i  amb un for fem tota la taula del numero introduit, copiant-la dins dun string
 for(var i = 1; i < 13; i++){
     taula += numero + " x " + i + " = " + (numero*i) + "\n";
 }
