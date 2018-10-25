@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <!-- Imatges que farem servir en el nostre espai de dibuix, estan ocultades -->
+    <img src="galaxia.jpg"    id="galaxia"    style="display: none;">
+    <img src="yoda.jpg"       id="yoda"       style="display: none;">
+    <img src="darthVader.jpg" id="darthVader" style="display: none;">
+    
+    <!-- Espai de dibuix -->
+    <canvas id="espai" width="300" height="300"> </canvas>
+
+<script>
+
+    //variables globals
+    var tauler = new Array(3);
+    tauler[0]=[1,1,2];
+    tauler[1]=[1,1,1];
+    tauler[2]=[3,1,1];
+    
+    //funció que pinta a l¡espai definit el tauler decodificat
+    function pinta()
+    { var canvas = document.getElementById("espai");
+      var ctx = canvas.getContext("2d");
+      var img;
+      for (var i=0;i<tauler.length;i++)
+        { for (var j=0;j<tauler[i].length;j++)
+            { if (tauler[i][j]==1) { img = document.getElementById("galaxia"); }     //1 és la galaxia
+                else if (tauler[i][j]==2) { img = document.getElementById("yoda"); } //2 és Yoda
+                    else {img = document.getElementById("darthVader");}              //3 és el malaguanyat Darth vader   
+              ctx.drawImage(img, i*100, j*100, 100, 100 );
+              }
+          }
+      }
+    
+    // funció que executa la funció "pinta" cada segon (1000 milisegons és un segon)
+    window.setInterval(pinta,1000);        
+
+</script>
+
+</body>
+</html>
