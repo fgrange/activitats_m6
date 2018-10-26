@@ -27,13 +27,13 @@
             { if (tauler[i][j]==1) { img = document.getElementById("galaxia"); }     //1 és la galaxia
                 else if (tauler[i][j]==2) { img = document.getElementById("yoda"); } //2 és Yoda
                     else {img = document.getElementById("darthVader");}              //3 és el malaguanyat Darth vader   
-              ctx.drawImage(img, i*100, j*100, 100, 100 );
+              ctx.drawImage(img, i*100, j*100, 50, 50 );
               }
           }
       }
     
     // funció que executa la funció "pinta" cada segon (1000 milisegons és un segon)
-    window.setInterval(pinta,1000);        
+    //window.setInterval(pinta,1000);        
 
 </script>
 
