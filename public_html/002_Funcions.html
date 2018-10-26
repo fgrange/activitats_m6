@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <script>
+            function ordena(enter1, enter2, enter3) {
+                if (enter1 == enter2) {
+                    if (enter2 == enter3)
+                        document.write('Los tres números son iguales');
+                    else if (enter2 > enter3)
+                        document.write(' el orden es: ', enter1, '=', enter2, '>', enter3);
+                    else
+                        document.write('el orden es: ', enter3, '>', enter1, '=', enter2);
+                } else if (enter1 == enter3) {
+                    if (enter1 > enter2)
+                        document.write('el orden es: ', enter1, '=', enter3, '>', enter2);
+                    else
+                        document.write('el orden es: ', enter2, '>', enter1, '=', enter3);
+                } else if (enter2 == enter3) {
+                    if (enter2 > enter1)
+                        document.write('el orden es: ', enter2, '=', enter3, '>', enter1);
+                    else
+                        document.write('el orden es: ', enter1, '>', enter2, '=', enter3);
+                } else if ((enter1 > enter2) && (enter2 > enter3))
+                    document.write('El orden es: ', enter1, '>', enter2, '>', enter3);
+                else if ((enter1 > enter3) && (enter3 > enter2))
+                    document.write('El orden es: ', enter1, '>', enter3, '>', enter2);
+                else if ((enter2 > enter1) && (enter1 > enter3))
+                    document.write('El orden es: ', enter2, '>', enter1, '>', enter3);
+                else if ((enter2 > enter3) && (enter3 > enter1))
+                    document.write('El orden es: ', enter2, '>', enter3, '>', enter1);
+                else if ((enter3 > enter1) && (enter1 > enter2))
+                    document.write('El orden es: ', enter3, '>', enter1, '>', enter2);
+                else if ((enter3 > enter2) && (enter2 > enter1))
+                    document.write('El orden es: ', enter3, '>', enter2, '>', enter1);
+            }
+            
+            
+            ordena(24,24,67);
+        </script>
+
+        
+        
+    </body>
+</html>

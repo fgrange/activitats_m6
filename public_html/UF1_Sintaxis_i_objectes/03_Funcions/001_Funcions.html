@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <script>
+            
+            var numero1 = 5;
+            var numero2 = 3;
+            var numero3 = 1;
+            function menor(entero1, entero2, entero3) {
+                if (entero1 < entero2 && entero1<entero3) {
+                    return entero1;
+                }
+                if (entero2 < entero1 && entero2<entero3) {
+                    return entero2;
+                }
+                if (entero3 < entero1 && entero3<entero2) {
+                    return entero3;
+                }
+                //return Math.min(entero1,entero2,entero3);
+            }
+            
+            alert("El númeromenor es el: "+menor(numero1, numero2, numero3));
+        </script>
+
+
+    </body>
+</html>
