@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<body id="all"></body>                                             
+<script>                                                          
+   function notificaObservador(e) {                                
+      console.log("Event "+ e.type)                                
+      console.log(e);                                             
+      }                                                            
+   var element = document.getElementById("all");                  
+   element.addEventListener("keypress", notificaObservador);      
+   element.addEventListener("keydown", notificaObservador);       
+   element.addEventListener("keyup", notificaObservador);         
+   </script>
+</body>
+</html>
