@@ -17,7 +17,7 @@
     tauler[1]=[1,1,1];
     tauler[2]=[3,1,1];
     
-    //funció que pinta a l¡espai definit el tauler decodificat
+    //funció que pinta a l'espai definit el tauler decodificat
     function pinta()
     { var canvas = document.getElementById("espai");
       var ctx = canvas.getContext("2d");
@@ -27,7 +27,7 @@
             { if (tauler[i][j]==1) { img = document.getElementById("galaxia"); }     //1 és la galaxia
                 else if (tauler[i][j]==2) { img = document.getElementById("yoda"); } //2 és Yoda
                     else {img = document.getElementById("darthVader");}              //3 és el malaguanyat Darth vader   
-              ctx.drawImage(img, i*100, j*100, 100, 100 );
+              ctx.drawImage(img, i*100, j*100, 50, 50 );
               }
           }
       }
