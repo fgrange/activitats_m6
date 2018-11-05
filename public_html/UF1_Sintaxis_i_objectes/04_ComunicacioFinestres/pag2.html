@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<!--
+5) El primer botó ha de canviar el color de fons de la primera pàgina posant-ne un d'aleatori.
+6) El segon botó ha de canviar el color de fons de la primera pàgina a verd.-->
+
+
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+            var pag1 = window.opener;
+            fondos = new Array();
+            fondos[0] = "RED";
+            fondos[1] = "YELLOW";
+            fondos[3] = "BLUE";
+            fondos[4] = "PINK";
+            fondos[5] = "PURPLE";
+            
+            function cambiarColor () {
+                pag1.document.bgColor = fondos[Math.floor(Math.random()*fondos.length)];
+            }
+            function fondoVerde () {
+                pag1.document.bgColor = "GREEN";
+            }
+        </script>
+    </head>
+    <body>
+        <div>TODO write content</div>
+        <p><input type="button" value="Cambiar color" onclick="cambiarColor()"></p>
+        <p><input type="button" value="Fondo Verde" onclick="fondoVerde()"></p>
+    </body>
+</html>

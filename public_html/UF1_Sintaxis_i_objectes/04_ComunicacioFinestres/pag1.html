@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<!--
+1) El primer botó ha d’obrir una segona pàgina web
+2) El segon botó, si hi ha la segona pàgina web oberta,ha de canviar-ne el color de fons.
+3) El tercer botó, si hi ha la segona pàgina web oberta,ha d’augmentar-ne 10px l’altura i l’amplada.
+4) El quart botó ha de tancar la segona pàgina web.-->
+
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+            var pag2 = null;
+            function nuevaVentana () {
+                pag2 = window.open("pag2.html","pag2","height=500,width=500");
+            }
+            function cambiarFondo (color) {
+                pag2.document.bgColor = color;
+            }
+            function aumentarTamano (a, b) {
+                pag2.window.resizeBy(a,b);
+            }
+            function cerrarVentana () {
+                pag2.window.close();
+            }
+        </script>
+    </head>
+    <body>
+        <div>TODO write content</div>
+        <p><input type="button" value="Abrir Ventana" onclick="nuevaVentana()"></p>
+        <p><input type="button" value="Cambiar Fondo" onclick="cambiarFondo('RED')"></p>
+        <p><input type="button" value="Cambiar Tamaño" onclick="aumentarTamano(10,10)"></p>
+        <p><input type="button" value="Cerrar ventana" onclick="cerrarVentana()"></p>
+    </body>
+</html>
