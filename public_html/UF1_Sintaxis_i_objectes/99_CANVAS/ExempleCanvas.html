@@ -13,9 +13,9 @@
 
     //variables globals
     var tauler = new Array(3);
-    tauler[0]=[1,1,2];
-    tauler[1]=[1,1,1];
-    tauler[2]=[3,1,1];
+    tauler[0]=[3,3,3];
+    tauler[1]=[1,2,1];
+    tauler[2]=[2,2,2];
     
     //funció que pinta a l'espai definit el tauler decodificat
     function pinta()
@@ -24,10 +24,10 @@
       var img;
       for (var i=0;i<tauler.length;i++)
         { for (var j=0;j<tauler[i].length;j++)
-            { if (tauler[i][j]==1) { img = document.getElementById("galaxia"); }     //1 és la galaxia
-                else if (tauler[i][j]==2) { img = document.getElementById("yoda"); } //2 és Yoda
+            { if (tauler[j][i]==1) { img = document.getElementById("galaxia"); }     //1 és la galaxia
+                else if (tauler[j][i]==2) { img = document.getElementById("yoda"); } //2 és Yoda
                     else {img = document.getElementById("darthVader");}              //3 és el malaguanyat Darth vader   
-              ctx.drawImage(img, i*100, j*100, 50, 50 );
+              ctx.drawImage(img, i*100, j*100, 75, 75 );
               }
           }
       }

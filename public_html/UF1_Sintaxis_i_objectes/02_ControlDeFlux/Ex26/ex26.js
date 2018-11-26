@@ -3,13 +3,13 @@
 //programa es demana que s'ingressi la quantitat de punts a processar
 
 //Declarem els contadorsde cada quadrant
-var q1 = 0
-var q2 = 0
-var q3 = 0
-var q4 = 0
+var q1 = 0;
+var q2 = 0;
+var q3 = 0;
+var q4 = 0;
 
 //Demanem quants punts vol introduir l'usuari
-var punts=parseInt(prompt("Ingressa quants punts voldras introduir: ", 2))
+var punts=parseInt(prompt("Ingressa quants punts voldras introduir: ", 2));
 
 //Creem un for on el límit es el valor ingressat abans
 for (var i=0; i < punts; i++)
@@ -21,23 +21,23 @@ for (var i=0; i < punts; i++)
 	//Depenent de la posició, el codi decideix en quin quadrant col·locar-lo
 	if (x >= 0 && y >=0) 
 	{
-		q1 += 1
+		q1 ++;
 	}
 	else if(x >=0 && y < 0)
 	{
-		q4 +=1
+		q4 ++;
 	}
 	else if (x < 0 && y >= 0)
 	{
-		q2 +1
+		q2 ++;
 	}
 	else
 	{
-		q3 =1
+		q3 ++;
 	}
 }
 //Imprimeix per pantalla cada quadrant
-alert("Coordenades al primer quadrant: " + q1)
-alert("Coordenades al segon quadrant: " + q2)
-alert("Coordenades al tercer quadrant: " + q3)
-alert("Coordenades al quart quadrant: " + q4)
+alert("Coordenades al primer quadrant: " + q1);
+alert("Coordenades al segon quadrant: " + q2);
+alert("Coordenades al tercer quadrant: " + q3);
+alert("Coordenades al quart quadrant: " + q4);

@@ -13,26 +13,25 @@ and open the template in the editor.
     <body>
         <script>
             function digitos(numero) {
-                var digitos = 0;
-                while(numero>=1){
-                    numero= numero/10;
-                    
-                    digitos++;
+                var contador = 0;
+                while (numero >= 1 && contador >= 11) {
+                    numero = numero / 10;
+
+                    contador++;
                 }
-                if(digitos<=10){
-                return digitos;
-                }else{
-                    return digitos;
-                }
+                return contador;
+
             }
-            
-            var numero = parseFloat(prompt("Inserta numero ",""));
-            
-            alert("El numero es "+numero+" y el número de dígitos: "+digitos(numero));
-            
+
+            var numero = parseFloat(prompt("Inserta numero ", ""));
+            if (numero == 11) {
+                alert("Hi ha més de 10 dígits");
+            } else {
+                alert("El numero es " + numero + " y el número de dígitos: " + digitos(numero));
+            }
         </script>
 
-        
-        
+
+
     </body>
 </html>

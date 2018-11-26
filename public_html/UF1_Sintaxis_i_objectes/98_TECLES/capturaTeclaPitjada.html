@@ -4,8 +4,9 @@
 
 <script>                                                          
    function notificaObservador(e) {                                
-      console.log("Event "+ e.type)                                
-      console.log(e);      //a la consola podeu veure l'objecte que té dos atributs on s'hi indica la tecla pitjada.                                       
+      //console.log("Event "+ e.type)                                
+      //console.log(e);      //a la consola podeu veure l'objecte que té dos atributs on s'hi indica la tecla pitjada.                                       
+      if (e.code == "ArrowLeft") { alert("'ha pitjat la fletca esquerras"); }
       }                                                            
    var element = document.getElementById("all");                  
    element.addEventListener("keydown", notificaObservador);       

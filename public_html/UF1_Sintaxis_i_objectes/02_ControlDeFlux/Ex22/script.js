@@ -9,7 +9,7 @@ var suma = 0;
 
 //i les demanem amb un for, alhora que les analitzem
 for(var i = 0; i < 10; i++){
-    parseInt(numeros[i] = prompt("Introduiex numero " + (i+1) + ":"));
+    numeros[i] = parseInt(prompt("Introduiex numero " + (i+1) + ":"));
     
     if(i>4) suma += numeros[i];
 }
