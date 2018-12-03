@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+            
+        var tetris = {
+            pecesQueVanSorgint : new Array()
+        }
+        
+        var Peça = function(forma, color, x, y)
+        { this.forma = forma;
+          this.color = color;
+          this.x = x;  
+          this.y = y;
+          };
+          
+        Peça.prototype.moureDreta = function()
+         { if ((x-1)>0) { x--;
+                          return true;
+                          }
+           else { return false; }
+           };
+           
+        Peça.prototype.moureEsquerra = function()
+         { if ((x+1)<14) { x++;
+                           return true;
+                           }
+           else { return false; }
+           };            
+           
+           
+           
+        function GeneraPecaAleatoria()
+         { var peces = [
+                 [[[0,0,0,0],[0,1,1,0],[0,1,1,0],[0,0,0,0]],"groc"],
+                 [[[0,1,0,0],[0,1,0,0],[0,1,0,0],[0,1,0,0]],"lila"],
+                 [[[0,0,0,0],[0,1,1,0],[1,1,0,0],[0,0,0,0]],"verd"],
+                 [[[0,0,0,0],[0,1,1,0],[0,0,1,1],[0,0,0,0]],"roig"],
+                 [[[0,1,0,0],[0,1,0,0],[0,1,1,0],[0,0,0,0]],"blau"],
+                 [[[0,1,1,0],[0,1,0,0],[0,1,0,0],[0,0,0,0]],"taronga"],
+                 [[[0,0,0,0],[1,1,1,0],[0,1,0,0],[0,0,0,0]],"morat"] ]
+           var numeroAleatori = Math.round(Math.random()*6);                      
+           return peces[numeroAleatori];     
+       }
+       
+       console.log(GeneraPecaAleatoria());
+       console.log(GeneraPecaAleatoria());
+       console.log(GeneraPecaAleatoria());
+       console.log(GeneraPecaAleatoria());
+       console.log(GeneraPecaAleatoria());
+       console.log(GeneraPecaAleatoria());
+                 
+                 
+       Peça.prototype.pintar = function()
+         { var resultat = "<table border='1'>";
+           for (var i = 0; i < this.forma.length;i++)
+            { resultat = resultat + "<tr>"
+                for (var j = 0; j<this.forma[i].length;j++) 
+                 { resultat = resultat + "<td>";
+                   if (this.forma[i][j]==1) { resultat=resultat+"X" }
+                    else { resultat = resultat + "-" };
+                   resultat = resultat + "</td>";
+                   }
+              resultat = resultat + "</tr>";
+              }
+            resultat = resultat + "</table>";
+            return resultat
+           };                      
+         
+         var pa = GeneraPecaAleatoria();
+         var p = new Peça(pa[0],pa[1]);
+         document.write(p.pintar());
+         
+         
+            </script>
+    </head>
+    <body>
+        <div>TODO write content</div>
+    </body>
+</html>

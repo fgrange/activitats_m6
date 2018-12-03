@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>           
+       
+        var Peça = function(x, y, color)
+        { this.x = x;  
+          this.y = y;
+          this.color = color;
+          };
+        Peça.prototype.posicionsPosibles = function()
+         { console.log("error -> el fill no ha implementat la funció")
+           };
+           
+                 
+        var PeçaRei = function ()
+         { Peça.apply(this, arguments);           
+           };
+        PeçaRei.prototype = Object.create(Peça.prototype); // Corregim prototipus de l’objecte
+        PeçaRei.prototype.constructor = PeçaRei; // Corregim el seu constructor
+        
+        PeçaRei.prototype.posicionsPosibles = function ()
+         { var resultat = new Array();
+           var x = this.x;
+           var y = this.y;
+           if (x-1>=0) { resultat.push([x-1,y]); }
+           if (x+1<=7) { resultat.push([x+1,y]); }
+           if (y-1>=0) 
+             { if (x-1>=0) { resultat.push([x-1,y-1]); }
+               resultat.push([x,y-1]);
+               if (x+1<=7) { resultat.push([x+1,y-1]); }
+               }
+           if (y+1<=7) 
+             { if (x-1>=0) { resultat.push([x-1,y+1]); }
+               resultat.push([x,y+1]);
+               if (x+1<=7) { resultat.push([x+1,y+1]); }
+               }
+           return resultat;
+           }
+        // Ho provem...   
+        var r = new PeçaRei(1,0,"blanca");
+        console.log(r.posicionsPosibles());
+             
+        
+    
+    
+        // ALFIL //
+        var PeçaAlfil = function ()
+         { Peça.apply(this, arguments);           
+           };
+        PeçaAlfil.prototype = Object.create(Peça.prototype); // Corregim prototipus de l’objecte
+        PeçaAlfil.prototype.constructor = PeçaAlfil; // Corregim el seu constructor
+        
+        PeçaAlfil.prototype.posicionsPosibles = function ()
+         { var resultat = new Array();
+           var x = this.x;
+           var y = this.y;
+           while ((x+1<=7)&&(y+1<=7)) { resultat.push([x+1,y+1]);
+                                        x++;
+                                        y++;
+                                        }
+           var x = this.x;
+           var y = this.y;                             
+           while ((x+1<=7)&&(y-1>=0)) { resultat.push([x+1,y-1]);
+                                        x++;
+                                        y--;
+                                        }
+           var x = this.x;
+           var y = this.y;                             
+           while ((x-1>=0)&&(y-1>=0)) { resultat.push([x-1,y-1]);
+                                        x--;
+                                        y--;
+                                        }
+           var x = this.x;
+           var y = this.y;                             
+           while ((x-1>=0)&&(y+1>=0)) { resultat.push([x-1,y+1]);
+                                        x--;
+                                        y++;
+                                        }
+
+           return resultat;
+           }
+        // Ho provem...   
+        var a = new PeçaAlfil(3,0,"blanca");
+        console.log(a.posicionsPosibles());
+               
+        
+        // TORRE //
+        var PeçaTorre = function ()
+         { Peça.apply(this, arguments);           
+           };
+        PeçaTorre.prototype = Object.create(Peça.prototype); // Corregim prototipus de l’objecte
+        PeçaTorre.prototype.constructor = PeçaTorre; // Corregim el seu constructor
+        
+        PeçaTorre.prototype.posicionsPosibles = function ()
+         { var resultat = new Array();
+           var x = this.x;
+           var y = this.y;
+           while (x+1<=7) { resultat.push([x+1,y]);
+                            x++;
+                            }
+           var x = this.x;                                      
+           while (x-1>=0) { resultat.push([x-1,y]);
+                             x--;
+                             }
+           var x = this.x;
+           while (y+1<=7) { resultat.push([x,y+1]);
+                              y++;
+                              }           
+           var y = this.y;                             
+           while (y-1>=0) { resultat.push([x,y-1]);
+                            y--;
+                            }
+           return resultat;
+           }
+        // Ho provem...   
+        var a = new PeçaTorre(5,5,"blanca");
+        console.log(a.posicionsPosibles());
+        
+        
+        
+        // CAVALLITO        
+        var PeçaCavall = function ()
+         { Peça.apply(this, arguments);           
+           };
+        PeçaCavall.prototype = Object.create(Peça.prototype); // Corregim prototipus de l’objecte
+        PeçaCavall.prototype.constructor = PeçaCavall; // Corregim el seu constructor
+        
+        PeçaCavall.prototype.posicionsPosibles = function ()
+         { var resultat = new Array();
+           var x = this.x;
+           var y = this.y;
+           if ((x+1<8)&&(y+2<8)) { resultat.push([x+1,y+2]); }
+           if ((x+2<8)&&(y+1<8)) { resultat.push([x+2,y+1]); }
+           if ((x+2<8)&&(y-1>0)) { resultat.push([x+2,y-1]); }
+           if ((x+1>0)&&(y-2>0)) { resultat.push([x+1,y-2]); }
+           
+           if ((x-1<8)&&(y+2<8)) { resultat.push([x-1,y+2]); }
+           if ((x-2<8)&&(y+1<8)) { resultat.push([x-2,y+1]); }
+           if ((x-2<8)&&(y-1>0)) { resultat.push([x-2,y-1]); }
+           if ((x-1>0)&&(y-2>0)) { resultat.push([x-1,y-2]); }           
+           
+           return resultat;
+           }
+        // Ho provem...   
+        var a = new PeçaCavall(5,5,"blanca");
+        console.log(a.posicionsPosibles());        
+         
+        
+        // peó
+        var PeçaPeo = function ()
+         { Peça.apply(this, arguments);           
+           };
+        PeçaPeo.prototype = Object.create(Peça.prototype); // Corregim prototipus de l’objecte
+        PeçaPeo.prototype.constructor = PeçaPeo; // Corregim el seu constructor
+        
+        PeçaPeo.prototype.posicionsPosibles = function ()
+         { var resultat = new Array();
+           var x = this.x;
+           var y = this.y;
+           
+           if ((this.color=="blanca")&&(y+1<8)) { resultat.push([x,y+1]); }
+           if ((this.color=="blanca")&&(y==2)&&(y+2<8)) { resultat.push([x,y+2]); }        
+           if ((this.color=="negra")&&(y-1>0)) { resultat.push([x,y-1]); }
+           if ((this.color=="negra")&&(y==6)&&(y-2>0)) { resultat.push([x,y-2]); }        
+           
+           return resultat;
+           }
+        // Ho provem...   
+        var a = new PeçaPeo(6,6,"negra");
+        console.log(a.posicionsPosibles());        
+         
+            </script>
+    </head>
+    <body>
+        <div>TODO write content</div>
+    </body>
+</html>

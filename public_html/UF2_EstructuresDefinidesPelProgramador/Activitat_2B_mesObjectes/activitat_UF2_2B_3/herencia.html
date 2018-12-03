@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+            
+    // PERSONA
+    var Persona = function(nom, edat, genere)
+     { this.nom = nom;
+       this.edat = edat;
+       this.genere = genere;
+       };
+    Persona.prototype.obtDetalls = function()
+     { return (this.nom + " " + this.edat + " " + this.genere);
+       };
+
+    // Estudiant
+    var Estudiant = function (nom, edat, genere, curs, grup)
+     { Persona.apply(this, arguments);
+       var curs = curs;
+       //this.curs = curs;
+       this.grup = grup;       
+       };
+    Estudiant.prototype = Object.create(Persona.prototype); // Corregim prototipus de l’objecte
+    Estudiant.prototype.constructor = Estudiant; // Corregim el seu constructor
+    Estudiant.prototype.registrar = function ()
+     { return "Estudiant registrat"; }
+    Estudiant.prototype.getCurs = function() { return curs;}
+     
+    //Professor
+    var Professor = function (nom, edat, genere, assignatura, nivell)
+     { Persona.apply(this, arguments);
+       this.assignatura = assignatura;
+       this.nivell = nivell;
+       };
+    Professor.prototype = Object.create(Persona.prototype); // Corregim prototipus de l’objecte
+    Professor.prototype.constructor = Professor; // Corregim el seu constructor
+    Professor.prototype.assignar = function (a,c)
+     { this.assignatura = a;
+       this.nivell = c;
+       return "Professor assignar"; 
+       } 
+    
+
+    var pers = new Persona("Fede Grange", 74, "home");
+    console.log(pers.obtDetalls());
+    
+    var estu = new Estudiant("Alex Borras", 76, "home", "dam","2A");
+    console.log(estu.obtDetalls());
+    console.log(estu.grup);
+    console.log(estu.curs);
+    
+    var profe = new Professor("Irene Grange", 65, "dona", "M6","2");
+    console.log(profe.obtDetalls());
+    console.log(profe.assignatura);
+    console.log(profe.nivell);
+    profe.assignar("M7","3");
+    console.log(profe.assignatura);
+    console.log(profe.nivell);
+                                            
+            
+            </script>
+    </head>
+    <body>
+        <div>TODO write content</div>
+    </body>
+</html>
