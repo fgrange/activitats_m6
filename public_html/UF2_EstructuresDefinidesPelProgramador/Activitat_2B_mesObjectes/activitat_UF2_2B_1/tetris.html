@@ -9,7 +9,14 @@ and open the template in the editor.
         <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script>
+        
+    </head>
+    <body>
+        <div id="original">original</div>
+        <div id="girada">girada</div>
+    </body>
+</html>
+<script>
             
         var tetris = {
             pecesQueVanSorgint : new Array()
@@ -77,12 +84,22 @@ and open the template in the editor.
          
          var pa = GeneraPecaAleatoria();
          var p = new Peça(pa[0],pa[1]);
-         document.write(p.pintar());
+         //document.write(p.pintar());
+         document.getElementById("original").innerHTML = p.pintar();
          
+         Peça.prototype.rotarDreta = function () {
+            var formaNova = new Array();
+            for (var i=0;i<this.forma.length;i++) {
+                formaNova[i]=new Array();
+                for (var j=0;j<this.forma[i].length;j++) {
+                    formaNova[i][j]=this.forma[this.forma[i].length-1-j][i];
+                }
+            }
+            this.forma = formaNova;
+            }  
+        p.rotarDreta();
+        
+        document.getElementById("girada").innerHTML = p.pintar();
+        
          
             </script>
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
-</html>
