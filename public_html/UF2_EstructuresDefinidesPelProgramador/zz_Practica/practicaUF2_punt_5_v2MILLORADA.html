@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">        
+    </head>
+    <body id="all">
+        <div>TODO write content</div>
+        <div id="espai"> </div>
+        <div id="peça"> </div>
+        <div id="seguentPeça"></div>               
+    </body>
+</html>
+<script>            
+        var tetris = {
+            espai : new Array(25),
+            puntuacio: 0,
+            puntuacioMaxima: 0,
+            peçaActual: {},
+            peçaSeguent: {},
+            comptadorPeces : new Array(),
+            interval : 0,
+            inicialitzar : function ()
+                {   // inicialitzo l'espai
+                    for (var i=0;i<25;i++) {
+                        this.espai[i]=new Array();
+                        for (var j=0;j<10;j++) {
+                            this.espai[i][j]=0;
+                        }
+                    }
+                    // inicialitzo les peçes
+                    this.peçaActual = new Peça(this.GeneraPecaAleatoria(),21,3);
+                    this.pintaPeçaActual();
+                    this.peçaSeguent = new Peça(this.GeneraPecaAleatoria(),21,3);
+                },
+            movimentAutomatic : function() {
+                this.peçaActual.moureAvall();
+                if (!this.posicioValida()) {                     
+                    this.peçaActual.moureAmunt();
+                    this.transformaPeçaActualEnPared();
+                    this.peçaActual = this.peçaSeguent;
+                    this.peçaSeguent = new Peça(this.GeneraPecaAleatoria(),21,3);                    
+                }
+                this.pintaPeçaActual();
+            },            
+            retornaEspai : function() {
+                var resultat = "<table colspan='1'>";
+                for (var i=24;i>=0;i--) {
+                    resultat = resultat +  "<tr>";
+                    for (var j=0;j<10;j++) {
+                        resultat = resultat + "<td style='width:30px'>" + this.espai[i][j] + "</td>";
+                    }
+                    resultat = resultat + "</tr>";
+                    }
+                resultat = resultat + "</table>";
+                return resultat;
+            },
+            GeneraPecaAleatoria : function () {
+                var peces = [
+                    [[[0,0,0,0],[0,1,1,0],[0,1,1,0],[0,0,0,0]],"groc"],
+                    [[[0,1,0,0],[0,1,0,0],[0,1,0,0],[0,1,0,0]],"lila"],
+                    [[[0,0,0,0],[0,1,1,0],[1,1,0,0],[0,0,0,0]],"verd"],
+                    [[[0,0,0,0],[0,1,1,0],[0,0,1,1],[0,0,0,0]],"roig"],
+                    [[[0,1,0,0],[0,1,0,0],[0,1,1,0],[0,0,0,0]],"blau"],
+                    [[[0,1,1,0],[0,1,0,0],[0,1,0,0],[0,0,0,0]],"taronga"],
+                    [[[0,0,0,0],[1,1,1,0],[0,1,0,0],[0,0,0,0]],"morat"] ]
+                var numeroAleatori = Math.round(Math.random()*6);                      
+                return peces[numeroAleatori];     
+                },
+            pintaPeçaActual : function () {
+                //recorrec tot el array d'espai, i esborro els llocs on apareix la peça actual
+                for (i=0;i<25;i++) {
+                    for (var j=0;j<10;j++) { 
+                        if ((this.espai[i][j]!=0)&&(this.espai[i][j]!=1)) { this.espai[i][j]=0; }
+                    }
+                }
+                // poso les "A" que indiquen peça actual a l'array
+                for (i=0 ;i<4;i++) {
+                    for (var j=0;j<4;j++) {
+                        if (this.peçaActual.forma[i][j]!=0) {
+                            this.espai[this.peçaActual.x+i][this.peçaActual.y+j]="A";
+                        }
+                    }
+                }                    
+            },            
+            posicioValida : function () {
+                for (var i=0;i<this.peçaActual.forma.length;i++) {
+                    for (var j=0;j<this.peçaActual.forma[i].length;j++) {                        
+                        if (this.peçaActual.forma[i][j]==1) {
+                            console.log(this.peçaActual.x + " " +(this.peçaActual.x+i));                            
+                            if ((this.peçaActual.x+i)<0) { return false; }
+                            if (((this.peçaActual.y+j)<0)||((this.peçaActual.y+j)>9)) { return false; }
+                            if (this.espai[this.peçaActual.x+i][this.peçaActual.y+j]==1) { return false; }
+                        }
+                    }
+                }
+                return true;
+            },
+            transformaPeçaActualEnPared : function () {
+                // es tracta de recorrer tot l'espai i allí on hi hagui la peça actual, transformar les "A" en 1
+                for (var i=0;i<25;i++) {
+                    for (var j=0;j<10;j++) {
+                        if (this.espai[i][j]=="A") { this.espai[i][j] = 1; }
+                    }
+                }
+                // un cop fet, mirem si hi ha alguna linea que la podem esborrar...començarem per sota
+                for (var i=0;i<25;i++) {                    
+                    var j=0;
+                    while ((j<=9)&&(tetris.espai[i][j]==1)) { j++; }
+                    if (j==10) { for (var fila=i;fila<24;fila++) {
+                                    tetris.espai[fila] = tetris.espai[fila+1]
+                                 }
+                                 i--; //per si hi ha més d'nua línea seguida en blanc! CUIDADO!!
+                                tetris.espai[24]=[0,0,0,0,0,0,0,0,0,0,0];
+                    }                    
+                }
+            },            
+            finalitzat : function () {
+                //return ((this.peçaActual.x==21)&&(!this.PotAnarAvall()));
+            }
+        }
+        
+        
+    
+    var Peça = function(forma_color, x, y)
+        { this.forma = forma_color[0];
+          this.color = forma_color[1];
+          this.x = x;  
+          this.y = y;
+          };
+    
+    Peça.prototype.rotarDreta = function () {
+        var formaNova = new Array();
+        for (var i=0;i<this.forma.length;i++) {
+            formaNova[i]=new Array();
+            for (var j=0;j<this.forma[i].length;j++) {
+                formaNova[i][j]=this.forma[this.forma[i].length-1-j][i];
+            }
+        }
+        this.forma = formaNova;
+    }    
+    
+    Peça.prototype.rotarEsquerra = function() {
+        // rotar a l'esquerra és el mateix que rotar 3 cops a la dreta ;)
+        this.rotarDreta();
+        this.rotarDreta();
+        this.rotarDreta();        
+    }
+    
+    Peça.prototype.moureDreta = function() {
+        this.y++;
+    }
+                   
+    Peça.prototype.moureEsquerra = function() {
+        this.y--;
+    }
+    
+    Peça.prototype.moureAvall = function () {
+        this.x--;
+    }
+    
+    Peça.prototype.moureAmunt = function () {
+        this.x++;
+    }
+    
+    Peça.prototype.toHtmlTable = function() {
+        var resultat = "<table colspan='1'>";
+        for (var i=0;i<this.forma.length;i++) {
+            resultat = resultat + "<tr>";
+            for (var j =0;j<this.forma[i].length;j++) {
+                resultat = resultat + "<td>" + this.forma[i][j]+"</td>";
+            }
+            resultat = resultat + "</tr>";            
+        }
+        resultat = resultat + "</table>";
+        return resultat;
+    }
+        
+    Peça.prototype.pintar = function()
+        { var resultat = "<table border='1'>";
+          for (var i = this.forma.length-1; i >=0 ;i--)
+             { resultat = resultat + "<tr>"
+               for (var j = 0; j<this.forma[i].length;j++) 
+                   { resultat = resultat + "<td>";
+                     if (this.forma[i][j]==1) { resultat=resultat+"X" }
+                        else { resultat = resultat + "-" };
+                    resultat = resultat + "</td>";
+                    }
+              resultat = resultat + "</tr>";
+              }
+            resultat = resultat + "</table>";
+            return resultat
+           };                                                          
+    
+       /**Peça.prototype.pintar = function()
+         { var resultat = "<table border='1'>";
+           for (var i = 0; i < this.forma.length;i++)
+            { resultat = resultat + "<tr>"
+                for (var j = 0; j<this.forma[i].length;j++) 
+                 { resultat = resultat + "<td>";
+                   if (this.forma[i][j]==1) { resultat=resultat+"X" }
+                    else { resultat = resultat + "-" };
+                   resultat = resultat + "</td>";
+                   }
+              resultat = resultat + "</tr>";
+              }
+            resultat = resultat + "</table>";
+            return resultat
+           }; **/                              
+    
+    function capturaTecles(e) {
+        if (e.key=="ArrowRight") {  
+            tetris.peçaActual.moureDreta()
+            if (!tetris.posicioValida()) { tetris.peçaActual.moureEsquerra(); }
+            }
+        if (e.key=="ArrowLeft") {   
+            tetris.peçaActual.moureEsquerra();
+            if (!tetris.posicioValida()) { tetris.peçaActual.moureDreta(); }
+            }
+        if (e.key=="ArrowDown") { 
+            tetris.peçaActual.moureAvall();
+            if (!tetris.posicioValida()) { tetris.peçaActual.moureAmunt(); }
+                        
+            }
+        if (e.key=="ArrowUp") { 
+            tetris.peçaActual.rotarDreta();
+            if (!tetris.posicioValida()) { tetris.peçaActual.rotarEsquerra(); }
+            }
+        tetris.pintaPeçaActual();
+        document.getElementById("espai").innerHTML = tetris.retornaEspai();
+        }
+
+    function anarFent() {
+        document.getElementById("espai").innerHTML = tetris.retornaEspai();        
+        document.getElementById("seguentPeça").innerHTML = tetris.peçaSeguent.pintar();
+        document.getElementById("peça").innerHTML = tetris.peçaActual.pintar();
+        if (tetris.finalitzat()) { clearInterval(elTempsPassaInexorablement);
+                                   alert("joc finalitzat");
+                                   }
+        tetris.movimentAutomatic();                        
+    }
+
+    //inicialitzo el joc i mostro tauler per pantalla
+    tetris.inicialitzar();
+    document.getElementById("all").addEventListener("keydown", capturaTecles);    
+    var elTempsPassaInexorablement = setInterval(anarFent,500);    
+         
+    </script>

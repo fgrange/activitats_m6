@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <input id="nick" class="entrada">
+        <input id="descripcio" class="entrada">
+        <img src="https://i.ytimg.com/vi/CcpM4GMhsUU/maxresdefault.jpg" id="foto" height="100" width="100">
+        
+        
+    </body>
+    <script>
+        function elementFocus(e)
+        { var idElement = e.srcElement.id;
+          document.getElementById(idElement).style.border = "thick solid green";
+        }
+
+        function elementBlur(e)
+        { var idElement = e.srcElement.id;
+          document.getElementById(idElement).style.border = "";
+        }
+       document.getElementById("nick").addEventListener("focus",elementFocus)
+       document.getElementById("descripcio").addEventListener("focus",elementFocus)
+        
+       document.getElementById("nick").addEventListener("blur",elementBlur)
+       document.getElementById("descripcio").addEventListener("blur",elementBlur) 
+       
+       function dblclickFoto()
+       { alert(document.getElementById("nick").value);
+       }
+       document.getElementById("foto").addEventListener("dblclick", dblclickFoto)
+        </script>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body id="all">
+        <div id="numero"></div>            
+<script>
+    
+function ts(e) {
+    contador++;
+    document.getElementById("numero").innerHTML=contador;
+}
+
+function te(e) {
+    contador--;
+    document.getElementById("numero").innerHTML=contador;
+}
+
+var contador = 0;
+var element = document.getElementById("all");
+element.addEventListener("touchstart", ts);
+element.addEventListener("touchend", te);
+
+</script>
+    </body>
+</html>
