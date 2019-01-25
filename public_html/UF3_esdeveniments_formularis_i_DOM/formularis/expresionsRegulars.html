@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">        
+        </head>
+    <body>
+        <form action="/action_page.php">
+            <input type="text" name="country_code"  pattern="\w" title="Una sola lletra">
+			<input type="number" min="4" max="6" step="0.01" >
+            <input type="submit">
+            </form>
+        
+<script>
+    var regex1 = RegExp("\\d\\D\\d","g"); //es pot posar així  la "g" es per a que exec vagui endavant i no s'encalli al primer.
+        regex1 = /\d\D\d/g;               // o així
+    var str1 = "1 12 123 1234";
+
+    alert(regex1.test(str1));             // cert o fals si almenys hi ha una coincidencia
+
+    var coincidencia;
+    while (coincidencia = regex1.exec(str1)) { alert(coincidencia);
+                                               }
+</script>
+        </body>
+</html>

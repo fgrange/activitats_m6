@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body id="tot">
+        <table border="1">
+            <tr id="fila=0">
+                <th> </th>
+                <th id="0-0">A</th>
+                <th id="0-1">B</th>
+                <th id="0-2">C</th>
+                <th id="0-3">D</th>
+                <th id="0-4">E</th>
+                <th id="0-5">F</th> 
+                <th id="0-6">G</th>
+                <th id="0-7">H</th>
+            </tr>
+            <tr id="fila=1">                
+                <th id="1-0">1</th>
+                <td id="1-1"></td>
+                <td id="1-2"></td>
+                <td id="1-3"></td>
+                <td id="1-4"></td>
+                <td id="1-5"></td>
+                <td id="1-6"></td>
+                <td id="1-7"></td>
+                <td id="1-8"></td>
+            </tr>
+            <tr id="fila=2">                
+                <th id="2-0">2</th>
+                <td id="2-1"></td>
+                <td id="2-2"></td>
+                <td id="2-3"></td>
+                <td id="2-4">RB</td>
+                <td id="2-5"></td>
+                <td id="2-6"></td>
+                <td id="2-7"></td>
+                <td id="2-8"></td>
+            </tr>
+            <tr id="fila=3">                
+                <th id="3-0">3</th>
+                <td id="3-1"></td>
+                <td id="3-2"></td>
+                <td id="3-3"></td>
+                <td id="3-4"></td>
+                <td id="3-5"></td>
+                <td id="3-6"></td>
+                <td id="3-7"></td>
+                <td id="3-8"></td>
+            </tr>
+            <tr id="fila=4">                
+                <th id="4-0">4</th>
+                <td id="4-1"></td>
+                <td id="4-2"></td>
+                <td id="4-3"></td>
+                <td id="4-4"></td>
+                <td id="4-5"></td>
+                <td id="4-6"></td>
+                <td id="4-7"></td>
+                <td id="4-8"></td>
+            </tr>
+            <tr id="fila=5">                
+                <th id="5-0">5</th>
+                <td id="5-1"></td>
+                <td id="5-2"></td>
+                <td id="5-3">AN</td>
+                <td id="5-4"></td>
+                <td id="5-5"></td>
+                <td id="5-6"></td>
+                <td id="5-7"></td>
+                <td id="5-8"></td>
+            </tr>
+            <tr id="fila=6">                
+                <th id="6-0">6</th>
+                <td id="6-1"></td>
+                <td id="6-2"></td>
+                <td id="6-3"></td>
+                <td id="6-4"></td>
+                <td id="6-5"></td>
+                <td id="6-6"></td>
+                <td id="6-7"></td>
+                <td id="6-8"></td>
+            </tr>
+            <tr id="fila=7">                
+                <th id="7-0">7</th>
+                <td id="7-1" class="1"></td>
+                <td id="7-2"></td>
+                <td id="7-3"></td>
+                <td id="7-4"></td>
+                <td id="7-5">RN</td>
+                <td id="7-6"></td>
+                <td id="7-7"></td>
+                <td id="7-8"></td>
+            </tr>
+            <tr id="fila=8">                
+                <th id="8-0">8</th>
+                <td id="8-1" class="1"></td>
+                <td id="8-2" class="2"></td>
+                <td id="8-3"></td>
+                <td id="8-4"></td>
+                <td id="8-5"></td>
+                <td id="8-6"></td>
+                <td id="8-7"></td>
+                <td id="8-8"></td>
+            </tr>
+        </table>
+        <p id="info">sense res a dir</p>
+    </body>
+    <script>
+        //var ultimaCasellaClicada = null;
+        //var casellesPosibles = null;
+        
+        function numeroColumna(n)
+        { if (n=="A") return "1";
+          if (n=="B") return "2";
+          if (n=="C") return "3";
+          if (n=="D") return "4";
+          if (n=="E") return "5";
+          if (n=="F") return "6";
+          if (n=="G") return "7";
+          if (n=="H") return "8";          
+          }
+        document.getElementsByClassName("1").style.border=
+                
+        function iluminaColumna(c)
+        { var columna = numeroColumna(c);
+          for (var i=1;i<=8;i++) {
+            document.getElementById((i+"-"+columna)).style.border = "thick solid red";
+          }
+         }
+        
+        function iluminaFila(f)
+        { //var columna = numeroColumna(c);
+          for (var i=1;i<=8;i++) {
+            document.getElementById((f+"-"+i)).style.border = "thick solid red";
+          }
+         }
+        
+        function eliminaEstils()
+        { for (var i=1;i<=8;i++) { 
+                for (var j=1;j<=8;j++) { document.getElementById((i+"-"+j)).style.border = ""; 
+                } 
+          }                      
+        }
+        
+        function pitjenTecla(e)
+        { eliminaEstils();
+          if ((e.key.toUpperCase()>="A")&&(e.key.toUpperCase()<="H")) { iluminaColumna(e.key.toUpperCase()); }
+          if ((e.key.toUpperCase()>="1")&&(e.key.toUpperCase()<="8")) { iluminaFila(e.key.toUpperCase()); }             
+        }
+        document.getElementById("tot").addEventListener("keypress",pitjenTecla);
+        
+        //ratolí               
+        function iluminaCaselles(arrayCaselles)
+        { function iluminaCasella(x,y) { document.getElementById(x+"-"+y).style.border = "thick solid green"; } 
+          eliminaEstils();
+          for (var i=0;i<arrayCaselles.length;i++) {
+            iluminaCasella(arrayCaselles[i][0],arrayCaselles[i][1]);
+            }
+        }
+        
+        function clic(e)
+        { if ((e.srcElement.localName=="td")&&(e.srcElement.innerText!=""))
+            { //creo un objecte peça del tipus que hi ha...
+              var peca = null;
+              var fila = e.srcElement.id[0];
+              var columna = e.srcElement.id[2];
+              var tipo = e.srcElement.innerText[0];
+              var color = e.srcElement.innerText[1];                                          
+              document.getElementById("info").innerHTML = fila + "-" + columna;              
+              if (tipo=="R") { peca = new PeçaRei(fila,columna,color); }
+              if (tipo=="A") { peca = new PeçaAlfil(fila,columna,color); }             
+              iluminaCaselles(peca.posicionsPosibles());
+              
+            }
+            
+    
+    }
+        document.getElementById("tot").addEventListener("click",clic);
+        
+        </script>
+
+</html>
+        <script>
+        var Peça = function(x, y, color)
+        { this.x = parseInt(x);  
+          this.y = parseInt(y);
+          this.color = color;
+          };
+        Peça.prototype.posicionsPosibles = function()
+         { console.log("error -> el fill no ha implementat la funció")
+           };           
+               
+        var PeçaRei = function ()
+         { Peça.apply(this, arguments);           
+           };
+        PeçaRei.prototype = Object.create(Peça.prototype); // Corregim prototipus de l’objecte
+        PeçaRei.prototype.constructor = PeçaRei; // Corregim el seu constructor
+        
+        PeçaRei.prototype.posicionsPosibles = function ()
+         { var resultat = new Array();
+           var x = this.x;
+           var y = this.y;
+           if (x-1>=1) { resultat.push([x-1,y]); }
+           if (x+1<=8) { resultat.push([x+1,y]); }
+           if (y-1>=0) 
+             { if (x-1>=1) { resultat.push([x-1,y-1]); }
+               resultat.push([x,y-1]);
+               if (x+1<=8) { resultat.push([x+1,y-1]); }
+               }
+           if (y+1<=7) 
+             { if (x-1>=1) { resultat.push([x-1,y+1]); }
+               resultat.push([x,y+1]);
+               if (x+1<=8) { resultat.push([x+1,y+1]); }
+               }
+           return resultat;
+           }
+        // Ho provem...   
+        //var r = new PeçaRei(1,0,"blanca");
+        //console.log(r.posicionsPosibles());    
+    
+        // ALFIL //
+        var PeçaAlfil = function ()
+         { Peça.apply(this, arguments);           
+           };
+        PeçaAlfil.prototype = Object.create(Peça.prototype); // Corregim prototipus de l’objecte
+        PeçaAlfil.prototype.constructor = PeçaAlfil; // Corregim el seu constructor
+        
+        PeçaAlfil.prototype.posicionsPosibles = function ()
+         { var resultat = new Array();
+           var x = this.x;
+           var y = this.y;
+           while ((x+1<=8)&&(y+1<=8)) { resultat.push([x+1,y+1]);
+                                        x++;
+                                        y++;
+                                        }
+           var x = this.x;
+           var y = this.y;                             
+           while ((x+1<=8)&&(y-1>=1)) { resultat.push([x+1,y-1]);
+                                        x++;
+                                        y--;
+                                        }
+           var x = this.x;
+           var y = this.y;                             
+           while ((x-1>=1)&&(y-1>=1)) { resultat.push([x-1,y-1]);
+                                        x--;
+                                        y--;
+                                        }
+           var x = this.x;
+           var y = this.y;                             
+           while ((x-1>=1)&&(y+1>=1)) { resultat.push([x-1,y+1]);
+                                        x--;
+                                        y++;
+                                        }
+
+           return resultat;
+           }
+        // Ho provem...   
+        //var a = new PeçaAlfil(3,0,"blanca");
+        //console.log(a.posicionsPosibles());               
+        
+        // TORRE //
+        var PeçaTorre = function ()
+         { Peça.apply(this, arguments);           
+           };
+        PeçaTorre.prototype = Object.create(Peça.prototype); // Corregim prototipus de l’objecte
+        PeçaTorre.prototype.constructor = PeçaTorre; // Corregim el seu constructor
+        
+        PeçaTorre.prototype.posicionsPosibles = function ()
+         { var resultat = new Array();
+           var x = this.x;
+           var y = this.y;
+           while (x+1<=8) { resultat.push([x+1,y]);
+                            x++;
+                            }
+           var x = this.x;                                      
+           while (x-1>=1) { resultat.push([x-1,y]);
+                             x--;
+                             }
+           var x = this.x;
+           while (y+1<=8) { resultat.push([x,y+1]);
+                              y++;
+                              }           
+           var y = this.y;                             
+           while (y-1>=1) { resultat.push([x,y-1]);
+                            y--;
+                            }
+           return resultat;
+           }
+        // Ho provem...   
+        //var a = new PeçaTorre(5,5,"blanca");
+        //console.log(a.posicionsPosibles());
+                        
+        // CAVALLITO        
+        var PeçaCavall = function ()
+         { Peça.apply(this, arguments);           
+           };
+        PeçaCavall.prototype = Object.create(Peça.prototype); // Corregim prototipus de l’objecte
+        PeçaCavall.prototype.constructor = PeçaCavall; // Corregim el seu constructor
+        
+        PeçaCavall.prototype.posicionsPosibles = function ()
+         { var resultat = new Array();
+           var x = this.x;
+           var y = this.y;
+           if ((x+1<9)&&(y+2<9)) { resultat.push([x+1,y+2]); }
+           if ((x+2<9)&&(y+1<9)) { resultat.push([x+2,y+1]); }
+           if ((x+2<9)&&(y-1>1)) { resultat.push([x+2,y-1]); }
+           if ((x+1>1)&&(y-2>1)) { resultat.push([x+1,y-2]); }
+           
+           if ((x-1<9)&&(y+2<9)) { resultat.push([x-1,y+2]); }
+           if ((x-2<9)&&(y+1<9)) { resultat.push([x-2,y+1]); }
+           if ((x-2<9)&&(y-1>1)) { resultat.push([x-2,y-1]); }
+           if ((x-1>1)&&(y-2>1)) { resultat.push([x-1,y-2]); }           
+           
+           return resultat;
+           }
+        // Ho provem...   
+        //var a = new PeçaCavall(5,5,"blanca");
+        //console.log(a.posicionsPosibles());                 
+        
+        // peó
+        var PeçaPeo = function ()
+         { Peça.apply(this, arguments);           
+           };
+        PeçaPeo.prototype = Object.create(Peça.prototype); // Corregim prototipus de l’objecte
+        PeçaPeo.prototype.constructor = PeçaPeo; // Corregim el seu constructor
+        
+        PeçaPeo.prototype.posicionsPosibles = function ()
+         { var resultat = new Array();
+           var x = this.x;
+           var y = this.y;
+           
+           if ((this.color=="blanca")&&(y+1<9)) { resultat.push([x,y+1]); }
+           if ((this.color=="blanca")&&(y==2)&&(y+2<9)) { resultat.push([x,y+2]); }        
+           if ((this.color=="negra")&&(y-1>1)) { resultat.push([x,y-1]); }
+           if ((this.color=="negra")&&(y==7)&&(y-2>1)) { resultat.push([x,y-2]); }        
+           
+           return resultat;
+           }
+        // Ho provem...   
+        //var a = new PeçaPeo(6,6,"negra");
+        //console.log(a.posicionsPosibles());        
+            
+            </script>
